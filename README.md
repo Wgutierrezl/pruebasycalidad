@@ -1,19 +1,27 @@
 ### Para correr el archivo correctamente, seguir los siguientes pasos:
-1. Ubicarse en la ruta del archivo 'automation.py'
+1. Ubicarse en la ruta del archivo
 
 2. En la consola, crear un entorno virtual con el comando:
     ```python
     Python -m venv venv
     ```
 
-3. Instalar los requerimientos encontrados en 'requirements.txt'
+3. Activar el entorno virtual
+```bash
+    .\venv\Scripts\activate
+```
+
+4. Instalar los requerimientos encontrados en 'requirements.txt'
     ```python
     pip install -r requirements.txt
     ```
 
-4. Seleccionar el web Driver necesario dependiendo del navegador a usar, ya sea Firefox, Chrome, etc.
+5. Seleccionar el web Driver necesario dependiendo del navegador a usar, ya sea Firefox, Chrome, etc.
 
-5. Correr el archivo automation.py
+6. Correr el archivo automation.py
     ```Python
     py automation.py
     ```
+
+## Recomendaciones:
+Seguir el siguiente orden de pruebas: registerAutomation -> LogIn -> newAccounts
