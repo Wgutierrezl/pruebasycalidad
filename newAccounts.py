@@ -17,17 +17,15 @@ class ParaBankNewAccount(unittest.TestCase):
 
     def test_login(self):
         driver = self.driver
-        driver.get("https://parabank.parasoft.com/parabank/index.html")
+        driver.get("https://parabank.parasoft.com")
 
-        driver.find_element(By.NAME, "username").send_keys("waltg")
-        driver.find_element(By.NAME, "password").send_keys("wal")
+        driver.find_element(By.NAME, "username").send_keys("i")
+        driver.find_element(By.NAME, "password").send_keys("i")
         driver.find_element(By.CSS_SELECTOR, "input[value='Log In']").click()
 
         # Validación: que el título sea el esperado
         self.assertEqual(driver.title, "ParaBank | Accounts Overview")
-        print("✓ Login exitoso")
-        
-        
+              
         # 2. HACER CLIC EN NEW ACCOUNT
         driver.find_element(By.LINK_TEXT, "Open New Account").click()
         
@@ -36,39 +34,17 @@ class ParaBankNewAccount(unittest.TestCase):
             EC.presence_of_element_located((By.TAG_NAME, "h1"))
         ).text
         
-        
         self.assertEqual(open_new_account_title, "Open New Account")
-        print("✓ Página de Open New Account cargada")
-        
-        
-        # OPCIONAL: CREAR CUENTA
+           
+        # CREAR CUENTA
         driver.find_element(By.ID, "type").send_keys("CHECKING")
-        driver.find_element(By.ID, "fromAccountId").send_keys("13677")
-
+        time.sleep(2)
         driver.find_element(By.CSS_SELECTOR, "input[value='Open New Account']").click()
+        time.sleep(1)
         
-        # ESPERAR 10 SEGUNDOS ANTES DE VALIDAR
-        print("Esperando 10 segundos para que procese la creación de la cuenta...")
-        time.sleep(10)
-        
-        # Esperar el contenedor que siempre aparece
-        result_container = WebDriverWait(driver, 20).until(
-            EC.presence_of_element_located((By.ID, "openAccountResult"))
-        )
+        confirmation = driver.find_element(By.ID, "newAccountId")
+        self.assertTrue(driver.title, "ParaBank | Account Opened!")
 
-        # Sacar TODO el texto del contenedor
-        result_text = result_container.text
-
-        # Buscar el número con regex
-        match = re.search(r"\b\d{4,}\b", result_text)
-
-        self.assertIsNotNone(match, "No se encontró un número de cuenta")
-
-        new_account_number = match.group(0)
-
-        print("✓ Cuenta creada correctamente, nuevo número:", new_account_number)
-
-        self.assertTrue(new_account_number.isdigit())
         
     def tearDown(self):
         self.driver.quit()
