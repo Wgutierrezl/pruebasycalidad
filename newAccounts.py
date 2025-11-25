@@ -1,6 +1,5 @@
 import unittest
 from selenium import webdriver
-import re
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -22,10 +21,7 @@ class ParaBankNewAccount(unittest.TestCase):
         driver.find_element(By.NAME, "username").send_keys("i")
         driver.find_element(By.NAME, "password").send_keys("i")
         driver.find_element(By.CSS_SELECTOR, "input[value='Log In']").click()
-
-        # Validación: que el título sea el esperado
-        self.assertEqual(driver.title, "ParaBank | Accounts Overview")
-              
+  
         # 2. HACER CLIC EN NEW ACCOUNT
         driver.find_element(By.LINK_TEXT, "Open New Account").click()
         

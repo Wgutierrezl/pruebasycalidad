@@ -16,7 +16,7 @@ class ParabankRegistration(unittest.TestCase):
 
     def test_registration(self):
         driver = self.driver
-        driver.get("https://parabank.parasoft.com/parabank/register.html")
+        driver.get("https://parabank.parasoft.com/")
 
         # 2. Hacer clic en el enlace de registro
         driver.find_element(By.LINK_TEXT, "Register").click()
@@ -41,9 +41,6 @@ class ParabankRegistration(unittest.TestCase):
         success_title = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "h1.title"))
         ).text
-
-        # Depuración
-        print("Mensaje encontrado:", success_title)
 
         self.assertIn("Welcome", success_title)
 
