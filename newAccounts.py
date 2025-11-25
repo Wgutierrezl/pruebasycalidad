@@ -40,6 +40,8 @@ class ParaBankNewAccount(unittest.TestCase):
         
         confirmation = driver.find_element(By.ID, "newAccountId")
         self.assertTrue(driver.title, "ParaBank | Account Opened!")
+        
+        print("New account created with ID:", confirmation.text)
 
         
     def tearDown(self):
