@@ -30,7 +30,7 @@ class ParabankRegistration(unittest.TestCase):
         driver.find_element(By.ID, "customer.address.zipCode").send_keys("050001")
         driver.find_element(By.ID, "customer.phoneNumber").send_keys("3001234567")
         driver.find_element(By.ID, "customer.ssn").send_keys("123456789")
-        driver.find_element(By.ID, "customer.username").send_keys("walterTestUser123")
+        driver.find_element(By.ID, "customer.username").send_keys("testuser")
         driver.find_element(By.ID, "customer.password").send_keys("Password123")
         driver.find_element(By.ID, "repeatedPassword").send_keys("Password123")
 

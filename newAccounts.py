@@ -18,8 +18,8 @@ class ParaBankNewAccount(unittest.TestCase):
         driver = self.driver
         driver.get("https://parabank.parasoft.com")
 
-        driver.find_element(By.NAME, "username").send_keys("i")
-        driver.find_element(By.NAME, "password").send_keys("i")
+        driver.find_element(By.NAME, "username").send_keys("testuser")
+        driver.find_element(By.NAME, "password").send_keys("Password123")
         driver.find_element(By.CSS_SELECTOR, "input[value='Log In']").click()
   
         # 2. HACER CLIC EN NEW ACCOUNT
